@@ -22,6 +22,7 @@ Background: movies have been added to database
   And  I am on the RottenPotatoes home page
   Then 10 seed movies should exist
   And I should see "Aladdin" before "The Help"
+  And I should see all the movies
 
 Scenario: restrict to movies with "PG" or "R" ratings
   # enter step(s) to check the "PG" and "R" checkboxes
@@ -48,3 +49,7 @@ Scenario: restrict to movies with "PG" or "R" ratings
   And I should not see "Chicken Run"
 
 Scenario: all ratings selected
+  When I check the following ratings: PG, R, G, PG-13
+  # And I uncheck the following ratings: PG
+  And I press "Refresh"
+  Then I should see all the movies
